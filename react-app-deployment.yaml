@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: react-frontend
-          image: datuits/testk8s-frontend-ui:latest
+          image: datuits/devops-frontend:latest
           ports:
             - containerPort: 80
 ---
