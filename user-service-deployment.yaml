@@ -23,9 +23,12 @@ spec:
           - name: SPRING_DATA_MONGODB_URI
             value: mongodb://user-mongo-service:27017/user-service
           resources:
+            requests:
+              memory: "32Mi"
+              cpu: "0.2"
             limits:
               memory: "64Mi"
-              cpu: "0.1"
+              cpu: "0.4"
 ---
 apiVersion: v1
 kind: Service
