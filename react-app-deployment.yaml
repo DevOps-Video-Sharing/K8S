@@ -32,8 +32,6 @@ spec:
                 configMapKeyRef:
                   name: api-gateway-config
                   key: REACT_APP_API_URL
-
-              
 ---
 apiVersion: v1
 kind: Service
