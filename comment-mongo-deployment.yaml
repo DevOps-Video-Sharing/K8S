@@ -22,11 +22,11 @@ spec:
           value: comment-service-db
         resources:
           requests:
-            memory: "16Mi"
-            cpu: "0.05"
+            memory: "150Mi"
+            cpu: "0.2"
           limits:
-            memory: "32Mi"
-            cpu: "0.1"
+            memory: "300Mi"
+            cpu: "0.4"
         volumeMounts:
         - name: mongo-storage
           mountPath: /data/db
@@ -41,7 +41,7 @@ metadata:
   name: mongo-pv
 spec:
   capacity:
-    storage: 50Mi
+    storage: 300Mi
   accessModes:
     - ReadWriteOnce
   gcePersistentDisk:
@@ -57,7 +57,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 50Mi
+      storage: 300Mi
 ---
 apiVersion: v1
 kind: Service
