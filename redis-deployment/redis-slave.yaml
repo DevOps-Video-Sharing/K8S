@@ -41,6 +41,13 @@ spec:
           mountPath: /redis-slave
         - name: redis-data
           mountPath: /data
+        resources:
+          requests:
+            cpu: "0.2"
+            memory: "512Mi"
+          limits:
+            cpu: "0.4"
+            memory: "1Gi"
       volumes:
       - name: redis-config
         configMap:
