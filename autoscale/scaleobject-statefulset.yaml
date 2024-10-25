@@ -1,0 +1,33 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: redis-master-autoscaler
+  namespace: default
+spec:
+  scaleTargetRef:
+    name: redis-master
+    kind: StatefulSet
+  minReplicaCount: 3
+  maxReplicaCount: 9
+  triggers:
+    - type: cpu
+      metadata:
+        type: Utilization
+        value: "70"
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: redis-slave-autoscaler
+  namespace: default
+spec:
+  scaleTargetRef:
+    name: redis-slave
+    kind: StatefulSet
+  minReplicaCount: 3
+  maxReplicaCount: 9
+  triggers:
+    - type: cpu
+      metadata:
+        type: Utilization
+        value: "70"
