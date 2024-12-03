@@ -21,7 +21,7 @@ spec:
           - containerPort: 80
         resources:
           requests:
-            cpu: "1"
+            cpu: "0.5"
             memory: "250Mi"
           limits:
             cpu: "1"
@@ -39,4 +39,5 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
-  type: LoadBalancer
+      nodePort: 31122
+  type: NodePort
