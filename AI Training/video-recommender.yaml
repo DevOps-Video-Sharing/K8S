@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: video-recommender
+  labels:
+    app: video-recommender
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: video-recommender
+  template:
+    metadata:
+      labels:
+        app: video-recommender
+    spec:
+      containers:
+      - name: video-recommender
+        image: 21520623/video-recommender:latest
+        ports:
+        - containerPort: 5606
+        resources:
+          requests:
+            cpu: "1"
+            memory: "2Gi"
+          limits:
+            cpu: "2"
+            memory: "4Gi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: video-recommender
+  labels:
+    app: video-recommender
+spec:
+  selector:
+    app: video-recommender
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5606
+  type: NodePort

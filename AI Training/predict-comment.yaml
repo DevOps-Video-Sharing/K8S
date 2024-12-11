@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: predict-comment
+  labels:
+    app: predict-comment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: predict-comment
+  template:
+    metadata:
+      labels:
+        app: predict-comment
+    spec:
+      containers:
+      - name: predict-comment
+        image: 21520623/predict-comment:latest
+        ports:
+        - containerPort: 5609
+        resources:
+          requests:
+            cpu: "0.25"
+            memory: "500Mi"
+          limits:
+            cpu: "0.5"
+            memory: "1Gi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: predict-comment-svc
+  labels:
+    app: predict-comment
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: 5609
+  selector:
+    app: predict-comment
