@@ -22,10 +22,10 @@ spec:
           resources:
             requests:
               cpu: "0.5"
-              memory: "200Mi"
+              memory: "250Mi"
             limits:
               cpu: "0.5"
-              memory: "400Mi"
+              memory: "500Mi"
 ---
 apiVersion: v1
 kind: Service
@@ -38,4 +38,5 @@ spec:
     - protocol: TCP
       port: 8080
       targetPort: 8080
-  type: LoadBalancer
+      nodePort: 32357
+  type: NodePort
