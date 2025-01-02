@@ -19,15 +19,12 @@ spec:
           image: datuits/devops-comment-service:latest
           ports:
             - containerPort: 8082
-          env:
-          - name: SPRING_DATA_MONGODB_URI
-            value: mongodb://comment-mongo-service:27017/comment-service-db
           resources:
             requests: 
-              memory: "100Mi"
+              memory: "125Mi"
               cpu: "0.2"
             limits:
-              memory: "200Mi"
+              memory: "250Mi"
               cpu: "0.4"
 ---
 apiVersion: v1
