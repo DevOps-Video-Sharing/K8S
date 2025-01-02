@@ -22,10 +22,10 @@ spec:
           value: video-service
         resources:
           requests:
-            memory: "150Mi"
+            memory: "250Mi"
             cpu: "0.25"
           limits:
-            memory: "300Mi"
+            memory: "400Mi"
             cpu: "0.5"
         volumeMounts:
         - name: mongo-storage
@@ -36,19 +36,6 @@ spec:
           claimName: video-mongo-pvc
 ---
 apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: video-mongo-pv
-spec:
-  capacity:
-    storage: 300Mi
-  accessModes:
-    - ReadWriteOnce
-  gcePersistentDisk:
-    pdName: video-mongo-disk
-    fsType: ext4
----
-apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: video-mongo-pvc
@@ -57,7 +44,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 300Mi
+      storage: 600Mi
 ---
 apiVersion: v1
 kind: Service
