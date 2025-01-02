@@ -13,7 +13,7 @@ spec:
     - type: cpu
       metadata:
         type: Utilization
-        value: "70"
+        value: "80"
 ---
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
@@ -30,4 +30,4 @@ spec:
     - type: cpu
       metadata:
         type: Utilization
-        value: "70"
+        value: "80"
